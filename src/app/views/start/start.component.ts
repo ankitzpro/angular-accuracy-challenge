@@ -7,7 +7,7 @@ import { Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 
 
 @Component({
-  selector: 'StartComponent',
+  selector: 'start',
   templateUrl: './start.component.html'
 })
 export class StartComponent implements OnInit {

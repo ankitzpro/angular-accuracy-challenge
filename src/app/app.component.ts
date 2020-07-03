@@ -1,5 +1,4 @@
 import { Component,HostListener,Input,OnInit } from '@angular/core';
-import { Router} from '@angular/router';
 import { SwitchService} from './accuracy.service';
 
  
@@ -13,11 +12,11 @@ export class AppComponent  {
 
 @Input() gameData:any;
 
-  constructor(private routers:Router,private service:SwitchService ){
+  constructor(private service:SwitchService ){
   }
  ngOnInit() {
 
-    this.routers.navigate(['']);
+    
   }
 
 }
