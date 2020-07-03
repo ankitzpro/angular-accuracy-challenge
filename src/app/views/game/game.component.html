@@ -1,0 +1,47 @@
+<div class="row">
+<div style="width:50%"><h2>Level : {{level}}</h2>
+</div>
+<div style="width:50%" class="text-danger"><h2>{{(seconds).toFixed(1)}}</h2>
+</div>
+</div>
+<hr>
+<div class="row">
+<div *ngFor="let a of arr;let i = index" >
+  <div  style="width:50px;height:50px;padding:10px" class="btn btn-info m-1" >
+    <div  [ngClass]="a"></div>
+    </div>
+</div>
+</div>
+<div class="col-sm-12">
+<div class="row">
+  <div style="width:33.33%">
+    <table >
+      <tr (click)="selectAns(1)">
+        <th *ngFor="let x of ansar1; let d = index">{{x}}</th>
+      </tr>
+    </table>
+  </div>
+  <div style="width:33.33%">
+    <table>
+      <tr (click)="selectAns(2)">
+        <th *ngFor="let y of ansar2; let e = index">{{y}}</th>
+      </tr>
+    </table>
+  </div>
+  <div style="width:33.33%">
+    <table>
+      <tr (click)="selectAns(3)">
+        <th *ngFor="let z of ansar3; let f = index">{{z}}</th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+</div>
+<div class="row">
+<div *ngFor="let b of arr2;let j = index" >
+  <div  style="width:50px;height:50px;padding:10px" class="btn btn-info m-1" >
+    <div  [ngClass]="b"></div>
+    </div>
+</div>
+</div>
