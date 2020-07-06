@@ -27,7 +27,6 @@ export class GameComponent  {
   ngOnInit() {
     
     this.progress=Math.floor(Math.random() * 90)+10;
-    console.log('progress'+this.progress)
     this.whitespace=100-this.progress;
     this.countDown();
 }
@@ -45,7 +44,6 @@ else{
 console.log(this.numstring);
 }
  insertNum(a){
-   console.log(a);
    var b= (<HTMLInputElement>event.target).value;
      this.numstring=b;
  }

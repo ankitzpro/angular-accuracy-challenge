@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccuracyService} from '../../accuracy.service';
-import { Router} from '@angular/router';
+//import { Router} from '@angular/router';
 
 @Component({
   selector: 'timer',
@@ -8,7 +8,9 @@ import { Router} from '@angular/router';
 })
 export class TimerComponent implements OnInit {
 
-  constructor(private service: AccuracyService,private routers:Router) { }
+  constructor(private service: AccuracyService
+  //,private routers:Router
+  ) { }
 anstext:String;
 intervalId: number = 0;
 message: string = '';
@@ -24,11 +26,13 @@ this.service.level++;
       this.seconds -= 1;
       if (this.seconds === 0 ) {
         if(this.service.level>=10){
-          this.routers.navigate(['/start'])
+         // this.routers.navigate(['/start'],{ skipLocationChange: true })
+         this.service.changeCompo('Start');
         }
         else{
         this.service.seconds=10;
-        this.routers.navigate(['/game'])
+        //this.routers.navigate(['/game'],{ skipLocationChange: true })
+         this.service.changeCompo('Game');
       } 
     }
     }, 1000);
