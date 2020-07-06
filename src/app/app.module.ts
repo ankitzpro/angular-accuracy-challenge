@@ -14,7 +14,7 @@ import {NumberDirective} from'./numonly.directive'
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule , FormsModule,BrowserAnimationsModule,ReactiveFormsModule],
-  declarations: [ AppComponent, HelloComponent ,StartComponent,GameComponent,TimerComponent],
+  declarations: [ AppComponent, HelloComponent ,StartComponent,GameComponent,TimerComponent,],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
