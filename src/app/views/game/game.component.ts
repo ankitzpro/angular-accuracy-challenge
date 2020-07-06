@@ -1,94 +1,53 @@
 import { Component} from '@angular/core';
-import { SwitchService} from '../../accuracy.service';
+import { AccuracyService} from '../../accuracy.service';
 
 
-import { Router} from '@angular/router';
+//import { Router} from '@angular/router';
 
 
 @Component({
-  selector: 'GameComponent',
+  selector: 'game',
   templateUrl: './game.component.html',
   styleUrls: [ './game.component.css' ],
 })
 
 export class GameComponent  {
-  constructor(private service:SwitchService, private routers:Router ) { }
+  constructor(private service:AccuracyService, 
+  //private routers:Router 
+  ) { }
 
 
   eventText = '';
   level=this.service.level+1;
-
-  arr=['triangle','square','circle','cross'];
-  //ansarr=[];
-  arr2=['triangle','square','circle','cross'];
-  ansar1=[];
-  ansar2=[];
-  ansar3=[];
+ numstring:any='';
+  progress:any;
+  whitespace:any;
   randpos:number;
   seconds:number=this.service.seconds;
   ngOnInit() {
-    this.arr=this.shuffle(this.arr);
-    this.arr2=this.shuffle(this.arr2);
     
-
-    for(var i=0;i<this.arr.length;i++){ 
-      for(var j=0;j<this.arr2.length;j++){
-        
-        if(this.arr[i]==this.arr2[j]){
-          this.ansar1.push(j+1);
-          this.ansar2.push(j+1);
-          this.ansar3.push(j+1);
-        }
-      }
-    }
-
-this.randpos = Math.floor(Math.random() * 3)+1;
-
-switch(this.randpos){
- case 1:
- {
-   this.ansar2=this.shuffle(this.ansar2);
-   this.ansar3=this.shuffle(this.ansar3);
-   break;
- }
- case 2:
- {
-   this.ansar1=this.shuffle(this.ansar1);
-   this.ansar3=this.shuffle(this.ansar3);}
-   break;
- case 3:
- {
-   this.ansar2=this.shuffle(this.ansar2);
-   this.ansar1=this.shuffle(this.ansar1);
-   break;
-   }
-   }
-   this.countDown();
+    this.progress=Math.floor(Math.random() * 90)+10;
+    console.log('progress'+this.progress)
+    this.whitespace=100-this.progress;
+    this.countDown();
 }
   
 
-   shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-  return array;
-}
-
-selectAns(ans){
-this.service.clearTimer();
-
-if(ans==this.randpos){
-this.service.scoreCalc('Level Passed \n Correct Answer');this.routers.navigate(['/timer']);
+insertChar(char){
+var a= ""+this.numstring+char;
+var y: number = +a;
+if(y < 100){
+this.numstring=""+this.numstring+char;
 }
 else{
-this.service.scoreCalc('Level Lost \n Wrong Answer');this.routers.navigate(['/timer']);
+  alert('Number cannot be greater than 99');
 }
+console.log(this.numstring);
 }
+ insertNum(a){
+     this.numstring=a;
+ }
+
 
  private countDown(): void {
     this.service.intervalId = window.setInterval(() => {
@@ -96,10 +55,17 @@ this.service.scoreCalc('Level Lost \n Wrong Answer');this.routers.navigate(['/ti
       this.service.seconds=this.seconds;
       if ((this.seconds).toFixed(1) == '0.0') {
         this.service.anstext="You didn't attempted";
-        this.routers.navigate(['/timer'])
+        //this.routers.navigate(['/timer'],{ skipLocationChange: true })
+
+this.service.changeCompo('Timer');
       } 
-    }, 100);
+    }, 500);
   }
 
+  submit(){
+   var diff=this.progress-this.numstring; 
+  this.service.scoreCalc( Math.abs(diff));
+  this.service.changeCompo('Timer');
+  }
 
 }

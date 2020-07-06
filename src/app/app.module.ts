@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StartComponent } from './views/start/start.component';
 import { GameComponent } from './views/game/game.component';
 import { TimerComponent } from './views/timer/timer.component';
-
+import {NumberDirective} from'./numonly.directive'
 
 
 @NgModule({

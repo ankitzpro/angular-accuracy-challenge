@@ -1,47 +1,37 @@
 <div class="row">
-<div style="width:50%"><h2>Level : {{level}}</h2>
-</div>
-<div style="width:50%" class="text-danger"><h2>{{(seconds).toFixed(1)}}</h2>
-</div>
-</div>
-<hr>
-<div class="row">
-<div *ngFor="let a of arr;let i = index" >
-  <div  style="width:50px;height:50px;padding:10px" class="btn btn-info m-1" >
-    <div  [ngClass]="a"></div>
+    <div style="width:50%"><h2>Level : {{level}}</h2>
     </div>
-</div>
-</div>
-<div class="col-sm-12">
-<div class="row">
-  <div style="width:33.33%">
-    <table >
-      <tr (click)="selectAns(1)">
-        <th *ngFor="let x of ansar1; let d = index">{{x}}</th>
-      </tr>
-    </table>
-  </div>
-  <div style="width:33.33%">
-    <table>
-      <tr (click)="selectAns(2)">
-        <th *ngFor="let y of ansar2; let e = index">{{y}}</th>
-      </tr>
-    </table>
-  </div>
-  <div style="width:33.33%">
-    <table>
-      <tr (click)="selectAns(3)">
-        <th *ngFor="let z of ansar3; let f = index">{{z}}</th>
-      </tr>
-    </table>
-  </div>
-</div>
+    <div style="width:50%" class="text-danger"><h2>{{(seconds).toFixed(1)}}</h2>
+    </div>
+    </div>
+    <hr>
+    <div class="col-sm-12">
+    <div class="row" style="height:450px">
+      <div style="width:75%;height:100%;margin: 2px">
+        <div  style="height:25%;">
+            <input type="text" maxlength="2"class="inputfield" [(ngModel)]="numstring" placeholder="%" numbersOnly (input)="insertNum($event.target.value)">
+            
+        </div>
+        <div class="row" style="height:60%">
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('1')" class="btn btn-info m-2">1</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('2')" class="btn btn-info m-2">2</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('3')" class="btn btn-info m-2">3</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('4')" class="btn btn-info m-2">4</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('5')" class="btn btn-info m-2">5</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('6')" class="btn btn-info m-2">6</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('7')" class="btn btn-info m-2">7</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('8')" class="btn btn-info m-2">8</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('9')" class="btn btn-info m-2">9</div>
+        <div style="width:50px;height:50px;font-size: 22px" (click)="insertChar('0')" class="btn btn-info m-2">0</div>
+        </div> 
+        <div  style="height:15%">
+          <button type="submit" (click)="submit()" class="btn btn-lg  btn-primary ">Submit</button>
+        </div>
+    </div>
+      <div style="width:20%;height:100%;border: 1px solid black;margin: 2px;">
+      <div class="bg-light" style="width:100%;" [ngStyle]="{'height' : whitespace + '%' }"></div>
+      <div class="bg-primary" style="width:100%;" [ngStyle]="{'height' : progress + '%' }"></div>
+    </div>
 
-</div>
-<div class="row">
-<div *ngFor="let b of arr2;let j = index" >
-  <div  style="width:50px;height:50px;padding:10px" class="btn btn-info m-1" >
-    <div  [ngClass]="b"></div>
     </div>
-</div>
-</div>
+    </div>

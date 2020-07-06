@@ -1,5 +1,6 @@
 import { Component,HostListener,Input,OnInit } from '@angular/core';
-import { SwitchService} from './accuracy.service';
+import { AccuracyService} from './accuracy.service';
+import { Subscription } from 'rxjs';
 
  
  
@@ -12,11 +13,13 @@ export class AppComponent  {
 
 @Input() gameData:any;
 
-  constructor(private service:SwitchService ){
+  constructor(private service:AccuracyService ){
   }
+  composh:any
+  sub:Subscription;
  ngOnInit() {
+  this.sub = this.service.compoShow$.subscribe(compoShow => this.composh = compoShow);
 
-    
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwitchService} from '../../accuracy.service';
+import { AccuracyService} from '../../accuracy.service';
 import { Router} from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router} from '@angular/router';
 })
 export class TimerComponent implements OnInit {
 
-  constructor(private service: SwitchService,private routers:Router) { }
+  constructor(private service: AccuracyService,private routers:Router) { }
 anstext:String;
 intervalId: number = 0;
 message: string = '';

@@ -1,8 +1,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router'
-import { Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import { AccuracyService } from '../../accuracy.service';
 
 
 
@@ -12,31 +11,35 @@ import { Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 })
 export class StartComponent implements OnInit {
 
-  constructor( public routers:Router,
-    public formBuilder: FormBuilder){
+  constructor( 
+    public service:AccuracyService,
+   // public formBuilder: FormBuilder
+   ){
   }
-  public myForm : FormGroup;
+  //public myForm : FormGroup;
     submitted = false;
 
   ngOnInit() {
-    this.createForm();
+    //this.createForm();
   }
-  get f() { return this.myForm.controls; }
+  //get f() { return this.myForm.controls; }
 
-  createForm(){
-    this.myForm  = this.formBuilder.group({
-     email: ['']
-   });
-   }
+  // createForm(){
+  //   this.myForm  = this.formBuilder.group({
+  //    email: ['']
+  //  });
+  //  }
 
    onSubmit(){
     this.submitted = true;
-    if (this.myForm.invalid) {
-          return;
-        }
+    // if (this.myForm.invalid) {
+    //       return;
+    //     }
         
-        var formData=this.myForm.value;
-        this.routers.navigate(['/game']);
+    //     var formData=this.myForm.value;
+        //this.routers.navigate(['/game'],{ skipLocationChange: true });
+
+         this.service.changeCompo('Game');
    }
 
 }
