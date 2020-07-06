@@ -1,10 +1,17 @@
-<div class="container ">
-  <div class="gesture__zone">
-  <h1 class="text-primary">Accuracy Challenge</h1>
- <hr>
-   
 
-<start></start>
+      <div class="gesture__zone">
+      <h1 class="text-primary">Accuracy</h1>
+     <hr>
        
-</div>
-</div>
+     <div *ngIf="composh=='Start'">
+      <start ></start>
+      </div>
+      <div *ngIf="composh=='Game'">
+      <game ></game>
+      </div>
+      <div *ngIf="composh=='Timer'">
+      <timer ></timer>
+       </div>   
+           
+    </div>
+ 

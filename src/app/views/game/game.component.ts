@@ -45,7 +45,9 @@ else{
 console.log(this.numstring);
 }
  insertNum(a){
-     this.numstring=a;
+   console.log(a);
+   var b= (<HTMLInputElement>event.target).value;
+     this.numstring=b;
  }
 
 
@@ -59,7 +61,7 @@ console.log(this.numstring);
 
 this.service.changeCompo('Timer');
       } 
-    }, 500);
+    }, 100);
   }
 
   submit(){
